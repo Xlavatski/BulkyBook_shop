@@ -1,0 +1,44 @@
+﻿@model IEnumerable<BulkyBook.Models.ViewModels.QueryProductVM>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info">Earnings Structure List</h2>
+    </div>
+</div>
+
+<br />
+<form method="get" , asp-action="Search">
+    <p>
+        <input type="search" placeholder="Enter a product name..." value="@ViewData["GetProductDetails"]" name="nameProd" style="width:500px;" />
+        <input type="submit" value="Search" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-success">All Products</a>
+    </p>
+</form>
+<div>
+    <table class="table table-striped border">
+        <tr class="table-info">
+            <th>
+                @Html.DisplayNameFor(m => m.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Earnings)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(m => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.Earnings) kn
+                </td>
+            </tr>
+
+        }
+    </table>
+</div>

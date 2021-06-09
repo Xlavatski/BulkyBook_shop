@@ -1,0 +1,9 @@
+C:\Users\dglavas\source\repos\BulkyBook\BulkyBook.Utility\bin\Debug\netcoreapp3.1\BulkyBook.Utility.deps.json
+C:\Users\dglavas\source\repos\BulkyBook\BulkyBook.Utility\bin\Debug\netcoreapp3.1\BulkyBook.Utility.dll
+C:\Users\dglavas\source\repos\BulkyBook\BulkyBook.Utility\bin\Debug\netcoreapp3.1\BulkyBook.Utility.pdb
+C:\Users\dglavas\source\repos\BulkyBook\BulkyBook.Utility\obj\Debug\netcoreapp3.1\BulkyBook.Utility.csprojAssemblyReference.cache
+C:\Users\dglavas\source\repos\BulkyBook\BulkyBook.Utility\obj\Debug\netcoreapp3.1\BulkyBook.Utility.AssemblyInfoInputs.cache
+C:\Users\dglavas\source\repos\BulkyBook\BulkyBook.Utility\obj\Debug\netcoreapp3.1\BulkyBook.Utility.AssemblyInfo.cs
+C:\Users\dglavas\source\repos\BulkyBook\BulkyBook.Utility\obj\Debug\netcoreapp3.1\BulkyBook.Utility.csproj.CoreCompileInputs.cache
+C:\Users\dglavas\source\repos\BulkyBook\BulkyBook.Utility\obj\Debug\netcoreapp3.1\BulkyBook.Utility.dll
+C:\Users\dglavas\source\repos\BulkyBook\BulkyBook.Utility\obj\Debug\netcoreapp3.1\BulkyBook.Utility.pdb
