@@ -17,6 +17,14 @@
 <br />
 
 <div class="p-4 border rounded">
+    <form method="get" , asp-action="Search">
+        <p class="text-right">
+            <input type="search" placeholder="Enter a category..." value="@ViewData["GetCategorySearch"]" name="nameCat" style="width:300px" />
+            <input type="submit" value="Search" class="btn btn-primary" />
+            <a asp-action="Index" class="btn btn-success">All Category</a>
+        </p>
+    </form>
+
     @if (Model.Categories.Count() > 0)
     {
         <table class="table table-striped border">

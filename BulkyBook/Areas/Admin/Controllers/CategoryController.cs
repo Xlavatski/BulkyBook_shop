@@ -1,4 +1,5 @@
-﻿using BulkyBook.DataAccess.Repository.IRepository;
+﻿using AutoMapper;
+using BulkyBook.DataAccess.Repository.IRepository;
 using BulkyBook.Models;
 using BulkyBook.Models.ViewModels;
 using BulkyBook.Utility;
@@ -15,10 +16,12 @@ namespace BulkyBook.Areas.Admin.Controllers
     [Authorize(Roles = SD.Role_Admin)]
     public class CategoryController : Controller
     {
+        private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
 
-        public CategoryController(IUnitOfWork unitOfWork)
+        public CategoryController(IMapper mapper, IUnitOfWork unitOfWork)
         {
+            _mapper = mapper;
             _unitOfWork = unitOfWork;
         }
 
@@ -83,6 +86,55 @@ namespace BulkyBook.Areas.Admin.Controllers
             }
 
             return View(category);
+        }
+
+        //Search(staiviti u API)
+        public async Task<IActionResult> Search(string nameCat, int productPage = 1) 
+        {
+            ViewData["GetCategorySearch"] = nameCat;
+
+            CategoryVM categoryVM = new CategoryVM()
+            {
+                Categories = await _unitOfWork.Category.GetAllAsync()
+            };
+
+
+            if (!string.IsNullOrEmpty(nameCat)) 
+            {
+                CategoryVM categoryVM2 = new CategoryVM()
+                {
+                    Categories = categoryVM.Categories.Where(x => x.Name.ToLower().Contains(nameCat.ToLower())).ToList()
+                };
+
+                var countr = categoryVM2.Categories.Count();
+                categoryVM.Categories = categoryVM.Categories.OrderBy(p => p.Name)
+                    .Skip((productPage - 1) * 2).Take(2).ToList();
+
+                categoryVM2.PagingInfo = new PagingInfo
+                {
+                    CurrentPage = productPage,
+                    ItemPerPage = 2,
+                    TotalItem = countr,
+                    urlParam = "/Admin/Category/Index?productPage=:"
+                };
+
+                return View ("Index", categoryVM2);
+            }
+
+
+            var count = categoryVM.Categories.Count();
+            categoryVM.Categories = categoryVM.Categories.OrderBy(p => p.Name)
+                .Skip((productPage - 1) * 2).Take(2).ToList();
+
+            categoryVM.PagingInfo = new PagingInfo
+            {
+                CurrentPage = productPage,
+                ItemPerPage = 2,
+                TotalItem = count,
+                urlParam = "/Admin/Category/Index?productPage=:"
+            };
+
+            return View("Index", categoryVM);
         }
 
 

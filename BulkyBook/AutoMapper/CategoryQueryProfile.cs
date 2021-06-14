@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BulkyBook.Models;
 using BulkyBook.Models.Queries;
 using BulkyBook.Models.ViewModels;
 using System;
@@ -22,7 +23,6 @@ namespace BulkyBook.AutoMapper
                 .ForMember(dest =>
                 dest.Earnings,
                 opt => opt.MapFrom(src => src.Earnings));
-
         }
     }
 }
